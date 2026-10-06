@@ -10,8 +10,8 @@ def home():
     if request.method == 'POST':
         user_password = request.form.get('password')
         if user_password == password:
-            return send_from_directory('.', 'NO_INPUT.exe')
-        
+            return send_from_directory(
+                "downloads","NO_INPUT.exe", as_attachment=True)
 
     return render_template('index.html')
 
