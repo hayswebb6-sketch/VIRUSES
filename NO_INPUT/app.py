@@ -1,11 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, send_from_directory
+import os
 
 app = Flask(__name__)
 
-@app.route('/')
+password=os.environ.get('password')
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
+    if request.method == 'POST':
+        user_password = request.form.get('password')
+        if user_password == password:
+            return send_from_directory('.', 'NO_INPUT.exe')
+        
+
     return render_template('index.html')
 
 if __name__ == '__main__':
-    import os
-    app.run(host='0.0.0.0', port=os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
