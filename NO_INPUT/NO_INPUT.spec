@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['NO_INPUT/NO_INPUT.py'],
+    ['NO_INPUT.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('NO_INPUT.jpeg', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
