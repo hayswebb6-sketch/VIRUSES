@@ -3,15 +3,19 @@ import os
 
 app = Flask(__name__)
 
-password=os.environ.get('password')
+ENDLESS_BSOD_password=os.environ.get('BSOD_password')
+FileScrambler_password=os.environ.get('FileScrambler_password')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         user_password = request.form.get('password')
-        if user_password == password:
+        if user_password == ENDLESS_BSOD_password:
             return send_from_directory(
-                "dist","NO_INPUT.exe", as_attachment=True)
+                "dist","ENDLESS_BSOD.exe", as_attachment=True)
+        if user_password == FileScrambler_password:
+            return send_from_directory(
+                "dist","file_scrambler.exe", as_attachment=True)
 
     return render_template('index.html')
 
