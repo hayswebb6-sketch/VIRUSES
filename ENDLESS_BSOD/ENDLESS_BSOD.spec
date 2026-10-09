@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['NO_INPUT.py'],
+    ['Endless_BSOD.py'],
     pathex=[],
     binaries=[],
     datas=[('red_bsod.png', '.')],
-    hiddenimports=[],
+    hiddenimports=['win32com.client'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='NO_INPUT',
+    name='ENDLESS_BSOD',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

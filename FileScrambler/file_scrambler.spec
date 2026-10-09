@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['FileScrambler/file_scrambler.py'],
+    ['file_scrambler.py'],
     pathex=[],
     binaries=[],
     datas=[],
