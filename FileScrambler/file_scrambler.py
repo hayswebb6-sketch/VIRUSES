@@ -56,6 +56,13 @@ while True:
         ".ts",
         ".m2ts",
         ".webm",
+        ".epub",
+        ".mobi",
+        ".azw",
+        ".azw3",
+        ".fb2",
+        ".djvu",
+        ".torrent",
         ]
     desktop_files =[
         f for f in os.listdir(desktop_path) if os.path.isfile(os.path.join(desktop_path, f)) and any(f.endswith(ext) for ext in extensions)
