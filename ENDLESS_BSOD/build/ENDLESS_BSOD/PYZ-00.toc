@@ -1,4 +1,4 @@
-('C:\\Users\\Hays\\OneDrive\\Documents\\GitHub\\VIRUSES\\NO_INPUT\\build\\NO_INPUT\\PYZ-00.pyz',
+('C:\\Users\\Hays\\OneDrive\\Documents\\GitHub\\VIRUSES\\ENDLESS_BSOD\\build\\ENDLESS_BSOD\\PYZ-00.pyz',
  [('PIL',
    'C:\\Users\\Hays\\AppData\\Roaming\\Python\\Python314\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
@@ -271,6 +271,7 @@
   ('ctypes', 'C:\\Python314\\Lib\\ctypes\\__init__.py', 'PYMODULE'),
   ('ctypes._endian', 'C:\\Python314\\Lib\\ctypes\\_endian.py', 'PYMODULE'),
   ('ctypes._layout', 'C:\\Python314\\Lib\\ctypes\\_layout.py', 'PYMODULE'),
+  ('ctypes.wintypes', 'C:\\Python314\\Lib\\ctypes\\wintypes.py', 'PYMODULE'),
   ('dataclasses', 'C:\\Python314\\Lib\\dataclasses.py', 'PYMODULE'),
   ('datetime', 'C:\\Python314\\Lib\\datetime.py', 'PYMODULE'),
   ('decimal', 'C:\\Python314\\Lib\\decimal.py', 'PYMODULE'),
