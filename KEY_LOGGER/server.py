@@ -12,7 +12,15 @@ async def handler(websocket):
                 f.write(f"Ip: {ip} | Text:{text}\n")
             for client in clients.copy():
                 if client!=websocket:
-                    await client.send(text)
+                    try:
+                        await client.send(text)
+                    except websockets.exceptions.ConnectionClosed:
+                        clients.discard(client)
+    except websockets.exceptions.ConnectionClosed:
+        # A client dropped without a close handshake (sleep, network loss,
+        # process killed). That is normal, not an error, so swallow it instead
+        # of letting websockets log "connection handler failed" every time.
+        pass
     finally:
         clients.discard(websocket)
 async def main():
