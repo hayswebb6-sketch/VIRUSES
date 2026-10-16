@@ -20,10 +20,4 @@ Security, privacy & safety risks
 - Running the code on shared, networked, or production machines may violate privacy rules, ethics, or laws.
 - Network transmission to external hosts increases risk even in a VM — prefer an offline, isolated environment for testing.
 
-Warning — VM only / do not run on hosts you care about
-Do not execute any files from this folder on a host you care about. Run only in a fully isolated, disposable VM snapshot that can be reverted immediately. Ensure you have explicit written permission and legal authority before testing code that captures or transmits keystrokes.
-
-Recommendations for maintainers
-- Remove or redact network endpoints and compiled binaries (dist/, *.exe, *.pdb) before sharing publicly.
-- For educational purposes, replace network transmission with a local-only, consent-driven log or simulated input stream that does not capture or transmit real keystrokes.
-- If you keep the server for local testing only, avoid writing captured input to persistent files or secure/encrypt logs and restrict access to the test environment.
+It currently does not work (server.py is not reciving inputs) but if anyone wants to fix or point out why it might not be happening and suggest a fix, you can do that(In a matter of fact, you should)
