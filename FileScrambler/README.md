@@ -20,10 +20,5 @@ Risks / Why this is dangerous
 - Copying or placing executables into system locations can change system behavior or persist unwanted programs.
 - Continuous file operations may make snapshot/backup-based recovery slower or incomplete.
 
-Warning — do not run outside a disposable VM
-This program will modify user files and can cause data loss. Do not execute any files from this folder on a host you care about. If you must work with this code for research, do so only in a fully isolated, disposable VM snapshot with no network access and with backups you can restore immediately.
-
-Recommendations for maintainers
-- Remove compiled executables, debug symbols, and dist/ folders before publishing or sharing the repository publicly.
-- Keep only the source and clearly documented warnings if you need to keep this for research.
-- Consider replacing destructive behaviors with inert mocks or sample outputs if you need to demonstrate behavior without risk.
+Icon Dance is currently not finished, If anyone wants to complete it they can because I know virtually no C++
+This somehow got on my host PC and got 10 files :(.
